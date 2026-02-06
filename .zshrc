@@ -22,7 +22,7 @@ setopt HIST_IGNORE_DUPS
 # 忽略以空格开头的命令（用于临时执行一些你不想保存的敏感命令）
 setopt HIST_IGNORE_SPACE
 
-# 在多个终端之间实时共享历史记录 
+# 在多个终端之间实时共享历史记录
 # 这是实现多终端同步最关键的选项
 setopt SHARE_HISTORY
 
@@ -31,6 +31,36 @@ setopt APPEND_HISTORY
 # 在历史记录中记录命令的执行开始时间和持续时间
 setopt EXTENDED_HISTORY
 
-alias cddoc='cd ~/Documents'
+yy() {
+    local tmp=$(mktemp -t "yazi-cwd.XXXXXX")
+    yazi "$@" --cwd-file="$tmp"
+    local cwd=$(cat -- "$tmp")
+    rm -f -- "$tmp"
+    if [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        cd -- "$cwd"
+    fi
+}
 
-figlet Now Login User: | lolcat;whoami | figlet | lolcat
+recovery-pacman() {
+	pacman "$@" \
+	--log /dev/null \
+	--noscriptlet \
+	--dbonly \
+	--overwrite "*" \
+	--nodeps \
+	--needed
+}
+
+export HF_ENDPOINT=https://hf-mirror.com
+
+# 设置别名
+alias ll='ls -lah'
+alias cddoc='cd /home/Hausmeister/文档'
+alias syyu='sudo pacman -Syyu'
+alias lghs='last -F | less'
+alias py='python3'
+
+echo "Now Login User:" | figlet | lolcat;whoami | figlet | lolcat
+
+date | lolcat
+cal | lolcat

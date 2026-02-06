@@ -1,5 +1,5 @@
 [Hotkey]
-# 反复按切换键时进行轮换
+# 按住切换键的修饰键时进行轮换切换
 EnumerateWithTriggerKeys=True
 # 向前切换输入法
 EnumerateForwardKeys=
@@ -15,20 +15,20 @@ ModifierOnlyKeyTimeout=250
 1=Zenkaku_Hankaku
 2=Hangul
 
+[Hotkey/ActivateKeys]
+0=Hangul_Hanja
+
+[Hotkey/DeactivateKeys]
+0=Hangul_Romaja
+
 [Hotkey/AltTriggerKeys]
-0=Shift_L
+0=Shift+Shift_R
 
 [Hotkey/EnumerateGroupForwardKeys]
 0=Super+space
 
 [Hotkey/EnumerateGroupBackwardKeys]
 0=Shift+Super+space
-
-[Hotkey/ActivateKeys]
-0=Hangul_Hanja
-
-[Hotkey/DeactivateKeys]
-0=Hangul_Romaja
 
 [Hotkey/PrevPage]
 0=Up
@@ -63,10 +63,10 @@ CompactInputMethodInformation=True
 # 显示第一个输入法的信息
 ShowFirstInputMethodInformation=True
 # 默认页大小
-DefaultPageSize=10
-# 覆盖 Xkb 选项
+DefaultPageSize=6
+# 覆盖 XKB 选项
 OverrideXkbOption=False
-# 自定义 Xkb 选项
+# 自定义 XKB 选项
 CustomXkbOption=
 # Force Enabled Addons
 EnabledAddons=

@@ -8,13 +8,25 @@ DefaultIM=keyboard-us
 
 [Groups/0/Items/0]
 # Name
-Name=rime
+Name=pinyin
 # Layout
 Layout=
 
 [Groups/0/Items/1]
 # Name
 Name=keyboard-us
+# Layout
+Layout=
+
+[Groups/0/Items/2]
+# Name
+Name=keyboard-jp
+# Layout
+Layout=
+
+[Groups/0/Items/3]
+# Name
+Name=keyboard-cn
 # Layout
 Layout=
 

@@ -1,0 +1,274 @@
+* {
+    font-family: "Noto Sans CJK SC", "JetBrainsMono Nerd Font", "Iosevka", sans-serif;
+    font-size: 11px;
+    min-height: 0;
+}
+
+window#waybar {
+    background:rgba(40, 42, 54, 0.664);
+    color: #cdd6f4;
+    border-radius: 11px;
+    margin: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+tooltip {
+    background: rgba(54, 54, 77, 0.95);
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+tooltip label {
+    color: #cdd6f4;
+    font-size: 12px;
+}
+
+#workspaces {
+    margin: 0 10px;
+    padding: 4px 0;
+}
+
+#workspaces button {
+    padding: 6px 12px;
+    margin: 0 3px;
+    background: transparent;
+    color: #cdd6f4;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+#workspaces button:hover:not(.focused) {
+    background: rgba(255, 255, 255, 0.06);
+    color: #cdd6f4;
+}
+
+#workspaces button.focused {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+#workspaces button.urgent {
+    background: rgba(243, 139, 168, 0.2);
+    color: #f38ba8;
+    border-radius: 8px;
+}
+
+#custom-arch,
+#custom-file,
+#custom-edit,
+#custom-view,
+#custom-go,
+#custom-window {
+    padding: 6px 12px;
+    margin: 4px 2px;
+    border-radius: 8px;
+}
+
+#custom-arch:hover,
+#custom-file:hover,
+#custom-edit:hover,
+#custom-view:hover,
+#custom-go:hover,
+#custom-window:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+#clock {
+    margin: 4px 6px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    color: #cdd6f4;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+#clock:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #89b4fa;
+}
+
+#battery {
+    margin: 4px 6px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    color: #cdd6f4;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+#battery:hover {
+    background: rgba(255, 255, 255, 0.117);
+}
+
+#battery.charging {
+    color: #7fff74;
+}
+
+#battery.plugged {
+    color: #89b4fa;
+}
+
+#battery.warning:not(.charging) {
+    color: #fab387;
+    background: rgba(250, 179, 135, 0.1);
+}
+
+#battery.warning:not(.charging) label {
+    animation-name: blink;
+    animation-duration: 0.75s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.critical:not(.charging) {
+    color: #ff0048;
+    background: rgba(243, 139, 168, 0.15);
+}
+
+#battery.critical:not(.charging) label {
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        color: #1e1e2e;
+    }
+}
+
+#network {
+    margin: 4px 6px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    color: #cdd6f4;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+#network:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+#network.connected {
+    color: #89b4fa;
+}
+
+#network.disconnected {
+    color: #f38ba8;
+    background: rgba(243, 139, 168, 0.1);
+}
+
+#bluetooth {
+    margin: 4px 6px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    color: #cdd6f4;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+#bluetooth:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+#bluetooth.connected {
+    color: #b4befe;
+}
+
+#bluetooth.disconnected {
+    color: #949cbb;
+}
+
+#keyboard-state {
+    margin: 4px 6px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    color: #cdd6f4;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+#keyboard-state:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+#keyboard-state.capslock-on,
+#keyboard-state.numlock-on {
+    color: #f9e2af;
+    font-weight: bold;
+}
+
+#mpd {
+    margin: 4px 6px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    color: #cdd6f4;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+#mpd:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+#mpd.disconnected {
+    color: #949cbb;
+}
+
+#mpd.playing {
+    color: #89b4fa;
+}
+
+#mpd.paused {
+    color: #a6e3a1;
+}
+
+#idle_inhibitor {
+    margin: 4px 6px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    color: #cdd6f4;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+#idle_inhibitor:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+#idle_inhibitor.activated {
+    color: #b4befe;
+}
+
+#mode {
+    margin: 4px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    background: rgba(137, 180, 250, 0.2);
+    color: #89b4fa;
+    font-weight: bold;
+}
+
+#tray {
+    padding: 0 6px;
+}
+
+#tray > .needs-attention {
+    background-color: rgba(243, 139, 168, 0.2);
+    border-radius: 4px;
+}
+
+#custom-os_button {
+    font-size: 32px;
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+#custom-os_button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
