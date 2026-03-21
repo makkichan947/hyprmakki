@@ -31,36 +31,14 @@ setopt APPEND_HISTORY
 # 在历史记录中记录命令的执行开始时间和持续时间
 setopt EXTENDED_HISTORY
 
-yy() {
-    local tmp=$(mktemp -t "yazi-cwd.XXXXXX")
-    yazi "$@" --cwd-file="$tmp"
-    local cwd=$(cat -- "$tmp")
-    rm -f -- "$tmp"
-    if [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-        cd -- "$cwd"
-    fi
-}
-
-recovery-pacman() {
-	pacman "$@" \
-	--log /dev/null \
-	--noscriptlet \
-	--dbonly \
-	--overwrite "*" \
-	--nodeps \
-	--needed
-}
-
 export HF_ENDPOINT=https://hf-mirror.com
 
 # 设置别名
 alias ll='ls -lah'
-alias cddoc='cd /home/Hausmeister/文档'
 alias syyu='sudo pacman -Syyu'
 alias lghs='last -F | less'
 alias py='python3'
 
-echo "Now Login User:" | figlet | lolcat;whoami | figlet | lolcat
+echo "Now Login User:" | figlet | lolcat;whoami | figlet | lolcat 
 
-date | lolcat
-cal | lolcat
+cat ~/.config/gigachad.txt

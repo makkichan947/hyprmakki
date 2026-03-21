@@ -1,0 +1,18 @@
+# Ignore Caches
+.claude
+.ruff_cache
+__pycache__
+run_snapper_tui.build
+run_snapper_tui.dist
+run_snapper_tui.onefile-build
+
+# Ignore venv
+.venv
+
+# Ignore local build files
+build
+#dist
+snapper_tui.egg-info
+
+# Ignore Claude Fixes Logs
+AILog.md

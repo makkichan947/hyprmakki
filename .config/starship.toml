@@ -1,6 +1,6 @@
 format = """
 [░▒▓](#a3aed2)\
-[  ](bg:#a3aed2 fg:#090c0c)\
+[  ](bg:#a3aed2 fg:#090c0c)\
 [](bg:#769ff0 fg:#a3aed2)\
 $directory\
 [](fg:#769ff0 bg:#394260)\
@@ -19,6 +19,7 @@ $cmake\
 $java\
 [](fg:#212736 bg:#1d2230)\
 $time\
+$cmd_duration\
 [ ](fg:#1d2230)\
 \n$character"""
 
@@ -97,3 +98,8 @@ disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#1d2230"
 format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+
+[cmd_duration]
+min_time = 0
+style = "bg:#1d2230"
+format = '[Used [$duration](fg:#FFC600 bg:#1d2230)]($style)'
