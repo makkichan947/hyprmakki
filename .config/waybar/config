@@ -1,180 +1,128 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 18,
-  "spacing": 5,
+  "height": 32,
+  "spacing": 2,
+  "margin-top": 4,
+  "margin-left": 8,
+  "margin-right": 8,
+  
   "modules-left": [
     "custom/arch",
     "hyprland/window",
-    "custom/file",
-    "custom/edit",
-    "custom/view",
-    "custom/go",
-    "custom/window"
+    "group/apps"
   ],
   "modules-center": [
-    "hyprland/workspaces",
-    "mpd"
+    "hyprland/workspaces"
   ],
   "modules-right": [
-    "keyboard-state",
     "tray",
-    "bluetooth",
+    "bluetooth", 
     "network",
     "battery",
     "clock"
   ],
 
-"hyprland/window": {
-  "format": " {title}",
-  "max-length": 20,
-  "empty": " 访达",
-  "separate-outputs": true,
-  "tooltip": true,
-  "tooltip-format": "当前窗口\nClass: {class}\nTitle: {title}"
-},
+  "hyprland/window": {
+    "format": " {title}",
+    "max-length": 20,
+    "empty": " 访达",
+    "separate-outputs": true,
+    "tooltip": true,
+    "tooltip-format": "当前窗口\nClass: {class}\nTitle: {title}"
+  },
 
-// hyprland/workspaces - 显示工作区所有窗口数量
-"hyprland/workspaces": {
-  "format": "{icon}",
-  "format-icons": {
-    "1": "1", "2": "2", "3": "3", "4": "4", "5": "5",
-    "6": "6", "7": "7", "8": "8", "9": "9", "10": "10",
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1", "2": "2", "3": "3", "4": "4", "5": "5",
+      "6": "6", "7": "7", "8": "8", "9": "9", "10": "10",
     "urgent": "",
     "active": "",
     "default": ""
+    },
+    "tooltip": true,
+    "tooltip-format": "<b>工作区 {name}</b>\n{windows} 个窗口",
+    "on-scroll-up": "exec hyprctl dispatch workspace e-1",
+    "on-scroll-down": "exec hyprctl dispatch workspace e+1",
+    "on-click": "activate",
+    "all-outputs": false,
+    "sort-by-number": true,
+    "active-only": false
   },
-  "tooltip": true,
-  "tooltip-format": "Workspace {name}\n{windows} 个窗口",
-  "on-scroll-up": "exec hyprctl dispatch workspace e-1",
-  "on-scroll-down": "exec hyprctl dispatch workspace e+1",
-  "on-click": "activate",
-  "all-outputs": false,
-  "sort-by-number": true
-},
+
+  "group/apps": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/file",
+      "custom/edit", 
+      "custom/view",
+      "custom/go"
+    ]
+  },
 
   "custom/arch": {
     "format": "",
-    "tooltip": false,
-    "on-click": "",
-    "interval": false
+    "tooltip": true,
+    "tooltip-format": "Arch Linux\n Hyprland",
+    "on-click": "rofi -show drun",
+    "class": "logo"
   },
-
   "custom/file": {
-    "format": "文件",
+    "format": "访达",
     "on-click": "nautilus",
-    "on-click-right": "ghostty -e yazi",
-    "tooltip": false,
-    "class": "app-menu"
+    "on-click-right": "kitty -e yazi",
+    "tooltip": true,
+    "tooltip-format": "  文件"
   },
-  
   "custom/edit": {
     "format": "编辑",
-    "on-click": "com.vscodium.codium-insiders",
-    "on-click-right": "gnome-text-editor",
-    "tooltip": false,
-    "class": "app-menu"
+    "on-click": "vscodium",
+    "on-click-right": "kitty -e vim .",
+    "tooltip": true,
+    "tooltip-format": "  编辑器"
   },
-  
   "custom/view": {
     "format": "显示",
-    "on-click": "",
-    "on-click-right": "",
-    "tooltip": false,
-    "class": "app-menu"
+    "on-click": "kitty",
+    "tooltip": true,
+    "tooltip-format": "  终端"
   },
-  
   "custom/go": {
-    "format": "前往",
-    "on-click": "",
-    "on-click-right": "",
-    "tooltip": false,
-    "class": "app-menu"
+    "format": " 前往",
+    "on-click": "rofi -show drun",
+    "on-click-right": "rofi -show window",
+    "tooltip": true,
+    "tooltip-format": "  启动"
   },
-  
-  "custom/window": {
-    "format": "窗口",
-    "on-click": "ghostty",
-    "on-click-right": "",
-    "tooltip": false,
-    "class": "app-menu"
-  },
-
-  "keyboard-state": {
-    "numlock": true,
-    "capslock": true,
-    "format": {
-        "numlock": "N {icon}",
-        "capslock": "C {icon}"                                                                                                                                                       
-    },
-    "format-icons": {
-        "locked": "",
-        "unlocked": ""
-    }
-},
-
-  "sway/scratchpad": {
-      "format": "{icon} {count}",
-      "show-empty": false,
-      "format-icons": [
-        "",
-        ""
-      ],
-      "tooltip": true,
-      "tooltip-format": "{app}: {title}"
-    },
-
-    "sway/mode": {
-      "format": "<span style=\"italic\">{}</span>"
-    },
 
   "mpd": {
-      "format": "  {title} - {artist} {stateIcon} [{elapsedTime:%M:%S}/{totalTime:%M:%S}] {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}[{songPosition}/{queueLength}] [{volume}%]",
-      "format-disconnected": " Disconnected",
-      "format-stopped": " {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped",
-      "unknown-tag": "N/A",
-      "interval": 2,
-      "consume-icons": {
-        "on": " "
-      },
-      "random-icons": {
-        "on": " "
-      },
-      "repeat-icons": {
-        "on": " "
-      },
-      "single-icons": {
-        "on": "1 "
-      },
-      "state-icons": {
-        "paused": "",
-        "playing": ""
-      },
-      "tooltip-format": "MPD (connected)",
-      "tooltip-format-disconnected": "MPD (disconnected)",
-      "on-click": "mpc toggle",
-      "on-click-right": "foot -a ncmpcpp ncmpcpp",
-      "on-scroll-up": "mpc volume +2",
-      "on-scroll-down": "mpc volume -2"
+    "format": "{stateIcon} {artist} - {title}",
+    "format-disconnected": "",
+    "format-stopped": "",
+    "interval": 2,
+    "state-icons": {
+      "paused": "",
+      "playing": ""
     },
-    "idle_inhibitor": {
-      "format": "{icon}",
-      "format-icons": {
-        "activated": "",
-        "deactivated": ""
-      }
-    },
+    "tooltip-format": "<b>{title}</b>\n{artist}\n{album}\n⏱ {elapsedTime:%M:%S}/{totalTime:%M:%S}",
+    "on-click": "mpc toggle",
+    "on-click-right": "foot -a ncmpcpp ncmpcpp",
+    "on-scroll-up": "mpc volume +5",
+    "on-scroll-down": "mpc volume -5",
+    "max-length": 30
+  },
 
   "bluetooth": {
-	"format": " {status}",
-	"format-connected": " {device_alias}",
-	"format-connected-battery": " {device_alias} {device_battery_percentage}%",
-	// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
-	"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
-},
+    "format": " {status}",
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+  },
 
   "battery": {
     "format": "{icon} {capacity}%",
@@ -188,16 +136,18 @@
     },
     "interval":1,
     "tooltip": true,
+    "tooltip-format": "<b>🔋 {capacity}%</b>\n{timeTo} • {power}W\n健康: {health}",
     "class": "battery"
   },
 
   "network": {
     "format-wifi": "   {essid} ({signalStrength}%)",
-    "format-ethernet": "   有线",
-    "format-disconnected": "⚠   离线{ifname}",
-    "tooltip-format": "{ifname}\n{essid}\n{signalStrength}% • {frequency} GHz\n{ipaddr}\n{bandwidthDownBits} ↓ • {bandwidthUpBits} ↑",
+    "format-ethernet": " 有线",
+    "format-disconnected": "⚠ 离线",
+    "tooltip-format": "🌐 网络信息\n━━━━━━━━━━\n接口: {ifname}\nSSID: {essid}\n信号: {signalStrength}%\n频率: {frequency} GHz\nIP: {ipaddr}\n↓ {bandwidthDownBits}  ↑ {bandwidthUpBits}",
     "interval": 10,
-    "on-click-right": "nm-connection-editor",
+    "on-click": "nm-connection-editor",
+    "on-click-right": "exec wifictl toggle"
   },
 
   "clock": {
@@ -228,19 +178,25 @@
     },
     "class": "clock"
   },
+
   "tray": {
-    "icon-size": 17,
-    "spacing": 6,
-    "show-passive-items": true,
-    "passive-icon-color": "#6e738d",
-    "active-icon-color": "#cdd6f4",
-    "icon-path": "/usr/share/icons/Papirus-Dark/24x24/panels/",
-    "smooth-scrolling-threshold": 0,
-    "on-click": "",
-    "on-click-middle": "",
-    "on-click-right": "",
+    "icon-size": 18,
+    "spacing": 8,
+    "show-passive-items": false,
     "tooltip": true,
-    "tooltip-format": "{title}\n{class}",
-    "class": "tray"
-}
+    "tooltip-format": "{title}",
+    "on-click": "activate"
+  },
+
+  "keyboard-state": {
+    "numlock": true,
+    "capslock": true,
+    "format": "{icon}",
+    "format-icons": {
+      "locked": "",
+      "unlocked": ""
+    },
+    "tooltip": true,
+    "tooltip-format": "CapsLock: {capslock}\nNumLock: {numlock}"
+  }
 }
