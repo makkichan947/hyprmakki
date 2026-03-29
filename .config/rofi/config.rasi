@@ -1,0 +1,3 @@
+// @theme "/usr/share/rofi/themes/fullscreen-preview.rasi"
+
+@theme "~/.config/rofi/launchpad.rasi"

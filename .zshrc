@@ -38,6 +38,7 @@ alias ll='ls -lah'
 alias syyu='sudo pacman -Syyu'
 alias lghs='last -F | less'
 alias py='python3'
+alias vi='vim'
 
 echo "Now Login User:" | figlet | lolcat;whoami | figlet | lolcat 
 

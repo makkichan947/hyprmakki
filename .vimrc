@@ -14,3 +14,21 @@ let g:airline_section_y = '%{&filetype}'      " 文件类型
 let g:airline_section_z = '%l/%L:%c'          " 行号/总行数:列号
 
 let g:airline_theme = 'tomorrow'   " 匹配Tomorrow配色方案
+
+:set number
+:set tabstop=4
+:set hlsearch
+
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+ 
+" 插件列表（格式：Plugin '用户名/仓库名'）
+Plugin 'VundleVim/Vundle.vim'       " Vundle 自身
+Plugin 'preservim/nerdtree'         " 文件浏览器
+Plugin 'tpope/vim-sensible'         " 基础配置增强
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}  " 代码补全
+ 
+call vundle#end()
+filetype plugin indent on  " 启用文件类型检测

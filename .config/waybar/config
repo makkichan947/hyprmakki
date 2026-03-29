@@ -17,6 +17,7 @@
   ],
   "modules-right": [
     "tray",
+    "pulseaudio",
     "bluetooth", 
     "network",
     "battery",
@@ -64,7 +65,7 @@
   "custom/arch": {
     "format": "",
     "tooltip": true,
-    "tooltip-format": "Arch Linux\n Hyprland",
+    "tooltip-format": " ┌────────────────────────────────────────┐\n ▸ Arch Linux x86_64\n ▸ Linux 6.17.13-hardened1-3-hardened\n ▸ Hyprland 0.54.1 (Wayland)\n└────────────────────────────────────────┘",
     "on-click": "rofi -show drun",
     "class": "logo"
   },
@@ -94,23 +95,6 @@
     "on-click-right": "rofi -show window",
     "tooltip": true,
     "tooltip-format": "  启动"
-  },
-
-  "mpd": {
-    "format": "{stateIcon} {artist} - {title}",
-    "format-disconnected": "",
-    "format-stopped": "",
-    "interval": 2,
-    "state-icons": {
-      "paused": "",
-      "playing": ""
-    },
-    "tooltip-format": "<b>{title}</b>\n{artist}\n{album}\n⏱ {elapsedTime:%M:%S}/{totalTime:%M:%S}",
-    "on-click": "mpc toggle",
-    "on-click-right": "foot -a ncmpcpp ncmpcpp",
-    "on-scroll-up": "mpc volume +5",
-    "on-scroll-down": "mpc volume -5",
-    "max-length": 30
   },
 
   "bluetooth": {
@@ -198,5 +182,21 @@
     },
     "tooltip": true,
     "tooltip-format": "CapsLock: {capslock}\nNumLock: {numlock}"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰖁 静音",
+
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+
+    "tooltip": true,
+    "tooltip-format": "音量: {volume}%\n设备: {desc}",
+
+    "scroll-step": 5,
+
+    "on-click": "pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
   }
 }

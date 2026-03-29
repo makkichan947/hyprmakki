@@ -1,0 +1,143 @@
+* {
+    background-color: transparent;
+    text-color: #ffffff;
+    font: "SF Pro Display 14";
+}
+
+window {
+    fullscreen: true;
+    transparency: "real";
+    background-color: rgba(30, 30, 46, 0.55);
+    padding: 3em;
+    children: [ wrap, listview-split ];
+    spacing: 1.2em;
+}
+
+/* 容器（毛玻璃卡片） */
+wrap {
+    expand: false;
+    orientation: vertical;
+    children: [ inputbar, message ];
+
+    background-color: rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 1em;
+
+    border: 1px;
+    border-color: rgba(255,255,255,0.15);
+}
+
+/* 搜索栏 */
+inputbar {
+    spacing: 0.6em;
+    padding: 0.6em 1em;
+    border-radius: 8px;
+
+    background-color: rgba(255,255,255,0.08);
+    children: [ icon-ib, entry ];
+}
+
+icon-ib {
+    expand: false;
+    filename: "system-search";
+    size: 1.2em;
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+}
+
+entry {
+    placeholder: "搜索应用...";
+    placeholder-color: rgba(255,255,255,0.5);
+    text-color: #ffffff;
+}
+
+/* 提示栏（弱化，不要红色） */
+message {
+    background-color: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 0.5em;
+    text-color: rgba(255,255,255,0.8);
+}
+
+/* grid 布局（Launchpad 核心） */
+listview {
+    flow: horizontal;
+    fixed-columns: true;
+    columns: 8;
+    lines: 5;
+    spacing: 1em;
+}
+
+/* split（保留你原逻辑） */
+listview-split {
+    orientation: horizontal;
+    spacing: 1em;
+    children: [ listview ];
+}
+
+/* 应用卡片 */
+element {
+    orientation: vertical;
+    padding: 0.6em;
+    border-radius: 18px;
+
+    background-color: transparent;
+
+    children: [ element-icon, element-text ];
+}
+
+/* hover / 选中（macOS 风格） */
+element selected {
+    background-color: rgba(255,255,255,0.12);
+}
+
+/* 图标（更大更像 Launchpad） */
+element-icon {
+    size: 90px;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    margin: 0 0 0.4em 0;
+}
+
+/* 文字（居中 + 中文优化） */
+element-text {
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    text-color: #ffffff;
+    font: "SF Pro Display 12";
+}
+
+/* preview 模式优化 */
+@media ( enabled: env(PREVIEW, false)) {
+
+    icon-current-entry {
+        expand: true;
+        size: 70%;
+    }
+
+    listview-split {
+        children: [ listview, icon-current-entry ];
+    }
+
+    listview {
+        columns: 4;
+    }
+}
+
+/* 无图标 fallback */
+@media ( enabled: env(NO_IMAGE, false)) {
+    listview {
+        columns: 1;
+        spacing: 0.5em;
+    }
+
+    element {
+        children: [ element-text ];
+        padding: 0.8em;
+        border-radius: 10px;
+    }
+
+    element-text {
+        horizontal-align: 0.0;
+    }
+}
