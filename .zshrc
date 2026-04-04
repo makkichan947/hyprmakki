@@ -34,6 +34,7 @@ setopt EXTENDED_HISTORY
 export HF_ENDPOINT=https://hf-mirror.com
 
 # 设置别名
+alias l='ls'
 alias ll='ls -lah'
 alias syyu='sudo pacman -Syyu'
 alias lghs='last -F | less'
