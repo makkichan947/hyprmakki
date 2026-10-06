@@ -1,4 +1,5 @@
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 #语法检查和高亮
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -41,6 +42,7 @@ alias lghs='last -F | less'
 alias py='python3'
 alias vi='vim'
 alias tuiclock='tty-clock -stc'
+alias zd='z'
 
 echo "Now Login User:" | figlet | lolcat;whoami | figlet | lolcat 
 
